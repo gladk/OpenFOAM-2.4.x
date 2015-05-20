@@ -50,7 +50,11 @@ namespace viscosityModels
 Foam::tmp<Foam::volScalarField>
 Foam::viscosityModels::CrossPowerLaw::calcNu() const
 {
-    return (nu0_ - nuInf_)/(scalar(1) + pow(m_*strainRate(), n_)) + nuInf_;
+    return (nu0_ - nuInf_)/(scalar(1) + pow(m_*max
+                (
+                    (dimensionedScalar("one", dimTime, 1.0)*strainRate()),
+                    (dimensionedScalar("VSMALL", dimless, 0.001 ))
+                ), n_)) + nuInf_;
 }
 
 

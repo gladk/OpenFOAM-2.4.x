@@ -49,8 +49,10 @@ namespace viscosityModels
 
 Foam::tmp<Foam::volScalarField>
 Foam::viscosityModels::powerLaw::calcNu() const
-{
-    return max
+{ 
+  
+  //Foam::tmp<Foam::volScalarField> retV = 
+  return  max
     (
         nuMin_,
         min
@@ -60,13 +62,28 @@ Foam::viscosityModels::powerLaw::calcNu() const
             (
                 max
                 (
-                    dimensionedScalar("one", dimTime, 1.0)*strainRate(),
-                    dimensionedScalar("VSMALL", dimless, VSMALL)
+                    (dimensionedScalar("one", dimTime, 1.0)*strainRate()),
+                    (dimensionedScalar("VSMALL", dimless, 0.001 ))
                 ),
                 n_.value() - scalar(1.0)
             )
         )
     );
+    
+  //Info<<"One: "<< (dimensionedScalar("one", dimTime, 1.0))<<endl;
+  //Info<<"strainRate(): "<< (dimensionedScalar("one", dimTime, 1.0)*strainRate())<<endl;
+  //Info<<"n_.value(): "<< (n_.value())<<endl;
+  //Info<<"k_: "<< (k_)<<endl;
+  //Info<<"nuMin_: "<< (nuMin_)<<endl;
+  //Info<<"nuMax_: "<< (nuMax_)<<endl;
+  //Info<<"dimless: "<< dimensionedScalar("VSMALL", dimless, VSMALL)<<endl;
+  //Info<<"scalar(1.0): "<< scalar(1.0)<<endl;
+  //Info<<"min: "<< max((dimensionedScalar("one", dimTime, 1.0)*strainRate()),(dimensionedScalar("VSMALL", dimless, 0.001 )))<<endl;
+  //Info<<"(n_.value() - scalar(1.0)): "<< (n_.value() - scalar(1.0))<<endl;
+  //Info<<"nuCalc: "<< retV<<endl;
+  //Info<<"============================================================"<<endl;
+  
+  //return retV;
 }
 
 

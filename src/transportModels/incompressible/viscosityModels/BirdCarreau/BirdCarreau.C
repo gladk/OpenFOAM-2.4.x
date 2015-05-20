@@ -48,11 +48,16 @@ namespace viscosityModels
 
 Foam::tmp<Foam::volScalarField>
 Foam::viscosityModels::BirdCarreau::calcNu() const
-{
+{ 
     return
         nuInf_
       + (nu0_ - nuInf_)
-       *pow(scalar(1) + pow(k_*strainRate(), a_), (n_ - 1.0)/a_);
+       *pow(scalar(1) + pow(k_*max
+                (
+                    (dimensionedScalar("one", dimTime, 1.0)*strainRate()),
+                    (dimensionedScalar("VSMALL", dimless, 0.001 ))
+                ),
+                a_), (n_ - 1.0)/a_);
 }
 
 
