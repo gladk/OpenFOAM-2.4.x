@@ -64,6 +64,7 @@ class HerschelBulkley
         dimensionedScalar nu0_;
 
         volScalarField nu_;
+        volScalarField strainRate_;
 
 
     // Private Member Functions

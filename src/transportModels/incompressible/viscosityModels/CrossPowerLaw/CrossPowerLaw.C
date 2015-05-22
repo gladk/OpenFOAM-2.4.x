@@ -85,6 +85,18 @@ Foam::viscosityModels::CrossPowerLaw::CrossPowerLaw
             IOobject::AUTO_WRITE
         ),
         calcNu()
+    ),
+    strainRate_
+    (
+        IOobject
+        (
+            "strainRate",
+            U_.time().timeName(),
+            U_.db(),
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        strainRate()
     )
 {}
 

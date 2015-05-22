@@ -68,12 +68,14 @@ class BirdCarreau
         dimensionedScalar a_;
 
         volScalarField nu_;
+        volScalarField strainRate_;
 
 
     // Private Member Functions
 
         //- Calculate and return the laminar viscosity
         tmp<volScalarField> calcNu() const;
+        
 
 
 public:
@@ -117,6 +119,7 @@ public:
         void correct()
         {
             nu_ = calcNu();
+            strainRate_ = strainRate();
         }
 
         //- Read transportProperties dictionary

@@ -59,6 +59,7 @@ class Newtonian
         dimensionedScalar nu0_;
 
         volScalarField nu_;
+        volScalarField strainRate_;
 
 
 public:

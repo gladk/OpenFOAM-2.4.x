@@ -64,6 +64,7 @@ class CrossPowerLaw
         dimensionedScalar n_;
 
         volScalarField nu_;
+        volScalarField strainRate_;
 
     // Private Member Functions
 

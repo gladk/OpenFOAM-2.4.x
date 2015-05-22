@@ -64,6 +64,7 @@ class powerLaw
         dimensionedScalar nuMax_;
 
         volScalarField nu_;
+        volScalarField strainRate_;
 
 
     // Private Member Functions

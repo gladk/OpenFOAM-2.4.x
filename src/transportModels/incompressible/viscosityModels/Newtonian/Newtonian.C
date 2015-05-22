@@ -63,6 +63,18 @@ Foam::viscosityModels::Newtonian::Newtonian
         ),
         U_.mesh(),
         nu0_
+    ),
+    strainRate_
+    (
+        IOobject
+        (
+            "strainRate",
+            U_.time().timeName(),
+            U_.db(),
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        strainRate()
     )
 {}
 

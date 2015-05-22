@@ -60,7 +60,6 @@ Foam::viscosityModels::BirdCarreau::calcNu() const
                 a_), (n_ - 1.0)/a_);
 }
 
-
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
 Foam::viscosityModels::BirdCarreau::BirdCarreau
@@ -96,6 +95,18 @@ Foam::viscosityModels::BirdCarreau::BirdCarreau
             IOobject::AUTO_WRITE
         ),
         calcNu()
+    ),
+    strainRate_
+    (
+        IOobject
+        (
+            "strainRate",
+            U_.time().timeName(),
+            U_.db(),
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        strainRate()
     )
 {}
 
