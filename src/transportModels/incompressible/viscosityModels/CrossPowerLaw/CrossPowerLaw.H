@@ -113,6 +113,7 @@ public:
         void correct()
         {
             nu_ = calcNu();
+            strainRate_ = strainRate();
         }
 
         //- Read transportProperties dictionary

@@ -101,7 +101,9 @@ public:
 
         //- Correct the laminar viscosity (not appropriate, viscosity constant)
         void correct()
-        {}
+        {
+            strainRate_ = strainRate();
+        }
 
         //- Read transportProperties dictionary
         bool read(const dictionary& viscosityProperties);
